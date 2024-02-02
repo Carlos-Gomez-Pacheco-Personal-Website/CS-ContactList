@@ -10,7 +10,8 @@
 
 // Pass callback funtion //
 
-export default function ContactRow({ setSelectedContactId, contact }) {
+import PropTypes from "prop-types";
+function ContactRow({ setSelectedContactId, contact }) {
   return (
     <tr
       onClick={() => {
@@ -23,3 +24,15 @@ export default function ContactRow({ setSelectedContactId, contact }) {
     </tr>
   );
 }
+
+ContactRow.propTypes = {
+  setSelectedContactId: PropTypes.func.isRequired,
+  contact: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    phone: PropTypes.string.isRequired,
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  }),
+};
+
+export default ContactRow;

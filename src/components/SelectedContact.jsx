@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 
-export default function SelectedContact({
-  selectedContactId,
-  setSelectedContactId,
-}) {
+function SelectedContact({ selectedContactId, setSelectedContactId }) {
   const [contact, setContact] = useState(null);
 
   useEffect(() => {
@@ -34,3 +32,11 @@ export default function SelectedContact({
     </div>
   );
 }
+
+SelectedContact.propTypes = {
+  selectedContactId: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+    .isRequired,
+  setSelectedContactId: PropTypes.func.isRequired,
+};
+
+export default SelectedContact;

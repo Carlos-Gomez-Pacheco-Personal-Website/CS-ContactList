@@ -81,8 +81,9 @@
 
 import { useState, useEffect } from "react";
 import ContactRow from "./ContactRow";
+import PropTypes from "prop-types";
 
-export default function ContactList({ setSelectedContactId }) {
+function ContactList({ setSelectedContactId }) {
   const [contacts, setContacts] = useState([]);
 
   useEffect(() => {
@@ -126,3 +127,9 @@ export default function ContactList({ setSelectedContactId }) {
     </table>
   );
 }
+
+ContactList.propTypes = {
+  setSelectedContactId: PropTypes.func.isRequired,
+};
+
+export default ContactList;
